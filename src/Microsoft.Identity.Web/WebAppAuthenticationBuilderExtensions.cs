@@ -65,7 +65,7 @@ namespace Microsoft.Identity.Web
             string cookieScheme = CookieAuthenticationDefaults.AuthenticationScheme,
             bool subscribeToOpenIdConnectMiddlewareDiagnosticsEvents = false)
         {
-            builder.Services.Configure(openIdConnectScheme, configureOpenIdConnectOptions);
+            builder.Services.Configure<OpenIdConnectOptions>(openIdConnectScheme, configureOpenIdConnectOptions);
             builder.Services.Configure<MicrosoftIdentityOptions>(configureMicrosoftIdentityOptions);
             builder.Services.AddHttpClient();
 

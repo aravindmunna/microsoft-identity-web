@@ -152,5 +152,12 @@ namespace Microsoft.Identity.Web.Test.Resource
             Assert.True(_customEventWasRaised);
             _logger.Received().Log(Arg.Any<LogLevel>(), Arg.Any<EventId>(), Arg.Any<object>(), Arg.Any<Exception>(), Arg.Any<Func<object, Exception, string>>());
         }
+
+        private void Sample()
+        {
+            ILogger logger = Substitute.For<ILogger<OpenIdConnectMiddlewareDiagnostics>>();
+            logger.LogDebug("Message");
+            logger.Received().LogDebug(Arg.Any<string>());
+        }
     }
 }

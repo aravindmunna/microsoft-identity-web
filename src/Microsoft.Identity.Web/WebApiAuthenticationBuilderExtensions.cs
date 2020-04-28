@@ -70,7 +70,7 @@ namespace Microsoft.Identity.Web
             bool subscribeToJwtBearerMiddlewareDiagnosticsEvents = false)
         {
             builder.Services.Configure(jwtBearerScheme, configureJwtBearerOptions);
-            builder.Services.Configure<MicrosoftIdentityOptions>(configureMicrosoftIdentityOptions);
+            builder.Services.Configure(configureMicrosoftIdentityOptions);
 
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddSingleton<IJwtBearerMiddlewareDiagnostics, JwtBearerMiddlewareDiagnostics>();

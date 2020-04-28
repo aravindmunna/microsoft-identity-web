@@ -31,7 +31,7 @@ namespace Microsoft.Identity.Web
 
         private readonly IMsalTokenCacheProvider _tokenCacheProvider;
 
-        private IConfidentialClientApplication _application;
+        internal /* internal for test */ IConfidentialClientApplication _application;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private HttpContext CurrentHttpContext => _httpContextAccessor.HttpContext;
         private IMsalHttpClientFactory _httpClientFactory;
@@ -142,7 +142,7 @@ namespace Microsoft.Identity.Web
             }
             catch (MsalException ex)
             {
-                _logger.LogInformation(ex, "Exception occured while adding an account to the cache from the auth code. ");
+                _logger.LogInformation(ex, "Exception occurred while adding an account to the cache from the auth code. ");
                 throw;
             }
         }
@@ -248,7 +248,7 @@ namespace Microsoft.Identity.Web
         /// <param name="scopes">scopes requested to access a protected API. For this flow (client credentials), the scopes
         /// should be of the form "{ResourceIdUri/.default}" for instance <c>https://management.azure.net/.default</c> or, for Microsoft
         /// Graph, <c>https://graph.microsoft.com/.default</c> as the requested scopes are defined statically with the application registration
-        /// in the portal, and cannot be overriden in the application.</param>
+        /// in the portal, and cannot be overridden in the application.</param>
         /// <returns>An access token for the app itself, based on its scopes</returns>
         public async Task<string> GetAccessTokenForAppAsync(IEnumerable<string> scopes)
         {
@@ -265,6 +265,10 @@ namespace Microsoft.Identity.Web
                    .AcquireTokenForClient(scopes.Except(_scopesRequestedByMsal))
                    .ExecuteAsync()
                    .ConfigureAwait(false);
+            //var t = _application
+            //       .AcquireTokenForClient(scopes.Except(_scopesRequestedByMsal));
+            //result = await t.ExecuteAsync()
+            //.ConfigureAwait(false);
 
             return result.AccessToken;
         }
@@ -273,7 +277,7 @@ namespace Microsoft.Identity.Web
         /// Removes the account associated with context.HttpContext.User from the MSAL.NET cache
         /// </summary>
         /// <param name="context">RedirectContext passed-in to a <see cref="OnRedirectToIdentityProviderForSignOut"/>
-        /// Openidconnect event</param>
+        /// OpenIDConnect event</param>
         /// <returns></returns>
         public async Task RemoveAccountAsync(RedirectContext context)
         {
@@ -332,7 +336,7 @@ namespace Microsoft.Identity.Web
         /// </summary>
         /// <param name="claimsPrincipal"></param>
         /// <returns></returns>
-        private async Task<IConfidentialClientApplication> BuildConfidentialClientApplicationAsync()
+        internal /* internal for test */ async Task<IConfidentialClientApplication> BuildConfidentialClientApplicationAsync()
         {
             var request = CurrentHttpContext.Request;
             string currentUri = UriHelper.BuildAbsolute(
@@ -463,7 +467,6 @@ namespace Microsoft.Identity.Web
 
                 return result.AccessToken;
             }
-
             else if (!string.IsNullOrWhiteSpace(tenant))
             {
                 // Acquire an access token as another AAD authority
