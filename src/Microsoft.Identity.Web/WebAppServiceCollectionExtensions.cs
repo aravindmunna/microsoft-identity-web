@@ -32,7 +32,7 @@ namespace Microsoft.Identity.Web
         /// <param name="openIdConnectScheme">Optional name for the open id connect authentication scheme 
         /// (by default OpenIdConnectDefaults.AuthenticationScheme). This can be specified when you want to support
         /// several OpenIdConnect identity providers.</param>
-        /// <param name="cookieScheme">Optional name for the acookie uthentication scheme 
+        /// <param name="cookieScheme">Optional name for the cookie authentication scheme 
         /// (by default OpenIdConnectDefaults.AuthenticationScheme) </param>
         /// <param name="subscribeToOpenIdConnectMiddlewareDiagnosticsEvents">
         /// Set to true if you want to debug, or just understand the OpenIdConnect events.
@@ -66,12 +66,12 @@ namespace Microsoft.Identity.Web
         /// <param name="openIdConnectScheme">Optional name for the open id connect authentication scheme 
         /// (by default OpenIdConnectDefaults.AuthenticationScheme). This can be specified when you want to support
         /// several OpenIdConnect identity providers.</param>
-        /// <param name="cookieScheme">Optional name for the acookie uthentication scheme 
+        /// <param name="cookieScheme">Optional name for the cookie authentication scheme 
         /// (by default OpenIdConnectDefaults.AuthenticationScheme) </param>
         /// <param name="subscribeToOpenIdConnectMiddlewareDiagnosticsEvents">
         /// Set to true if you want to debug, or just understand the OpenIdConnect events.
         /// </param>
-        /// <returns>Yhe service collection for chaining</returns>
+        /// <returns>The service collection for chaining</returns>
         public static IServiceCollection AddSignIn(
             this IServiceCollection services,
             Action<OpenIdConnectOptions> configureOpenIdConnectOptions,
@@ -91,7 +91,7 @@ namespace Microsoft.Identity.Web
         }
 
         /// <summary>
-        /// Add MSAL support to the Web App or Web API
+        /// Add MSAL support to the Web app or Web API
         /// </summary>
         /// <param name="services">Service collection to which to add authentication</param>
         /// <param name="initialScopes">Initial scopes to request at sign-in</param>
@@ -100,7 +100,7 @@ namespace Microsoft.Identity.Web
         /// <param name="openIdConnectScheme">Optional name for the open id connect authentication scheme 
         /// (by default OpenIdConnectDefaults.AuthenticationScheme). This can be specified when you want to support
         /// several OpenIdConnect identity providers.</param>
-        /// <returns>Yhe service collection for chaining</returns>
+        /// <returns>The service collection for chaining</returns>
         public static IServiceCollection AddWebAppCallsProtectedWebApi(
             this IServiceCollection services,
             IConfiguration configuration,
@@ -117,7 +117,7 @@ namespace Microsoft.Identity.Web
         }
 
         /// <summary>
-        /// Add MSAL support to the Web App or Web API
+        /// Add MSAL support to the Web app or Web API
         /// </summary>
         /// <param name="services">Service collection to which to add authentication</param>
         /// <param name="initialScopes">Initial scopes to request at sign-in</param>
@@ -172,7 +172,7 @@ namespace Microsoft.Identity.Web
 
                 // Handling the token validated to get the client_info for cases where tenantId is not present (example: B2C)
                 var onTokenValidatedHandler = options.Events.OnTokenValidated;
-                options.Events.OnTokenValidated = async context =>
+                 options.Events.OnTokenValidated = async context =>
                 {
                     if (!context.Principal.HasClaim(c => c.Type == ClaimConstants.Tid || c.Type == ClaimConstants.TenantId))
                     {

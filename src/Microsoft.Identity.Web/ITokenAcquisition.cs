@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Microsoft.Identity.Web
 {
     /// <summary>
-    /// Interface for the token acquisition service (encapsultating MSAL.NET)
+    /// Interface for the token acquisition service (encapsulating MSAL.NET)
     /// </summary>
     public interface ITokenAcquisition
     {
@@ -34,7 +34,7 @@ namespace Microsoft.Identity.Web
         /// <param name="scopes">scopes requested to access a protected API. For this flow (client credentials), the scopes
         /// should be of the form "{ResourceIdUri/.default}" for instance <c>https://management.azure.net/.default</c> or, for Microsoft
         /// Graph, <c>https://graph.microsoft.com/.default</c> as the requested scopes are defined statically with the application registration
-        /// in the portal, and cannot be overriden in the application.</param>
+        /// in the portal, and cannot be overridden in the application.</param>
         /// <returns>An access token for the app itself, based on its scopes</returns>
         Task<string> GetAccessTokenForAppAsync(IEnumerable<string> scopes);
 
