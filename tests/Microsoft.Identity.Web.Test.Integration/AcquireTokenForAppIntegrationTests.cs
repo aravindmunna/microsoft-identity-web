@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;

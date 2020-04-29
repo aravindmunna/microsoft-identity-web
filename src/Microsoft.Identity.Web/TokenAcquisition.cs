@@ -1,6 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -10,14 +18,6 @@ using Microsoft.Extensions.Primitives;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Web.TokenCacheProviders;
 using Microsoft.Net.Http.Headers;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace Microsoft.Identity.Web
 {
@@ -60,7 +60,7 @@ namespace Microsoft.Identity.Web
         private readonly IHttpContextAccessor _httpContextAccessor;
 
         private HttpContext CurrentHttpContext => _httpContextAccessor.HttpContext;
-
+        private IMsalHttpClientFactory _httpClientFactory;
         private readonly ILogger _logger;
 
         /// <summary>
