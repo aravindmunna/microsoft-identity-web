@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
@@ -8,7 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Web.Resource;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using System;
 
 namespace Microsoft.Identity.Web
 {
@@ -153,7 +153,7 @@ namespace Microsoft.Identity.Web
                         // Handles the error when a user cancels an action on the Azure Active Directory B2C UI.
                         // Handle the error code that Azure Active Directory B2C throws when trying to reset a password from the login page
                         // because password reset is not supported by a "sign-up or sign-in user flow".
-                        await b2cOidcHandlers.OnRemoteFailure(context);
+                        await b2cOidcHandlers.OnRemoteFailure(context).ConfigureAwait(false);
 
                         await remoteFailureHandler(context).ConfigureAwait(false);
                     };

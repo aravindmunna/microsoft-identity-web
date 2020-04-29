@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using System;
 
 namespace Microsoft.Identity.Web
 {

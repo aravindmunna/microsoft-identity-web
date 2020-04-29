@@ -402,7 +402,7 @@ namespace Microsoft.Identity.Web
             {
                 if (_microsoftIdentityOptions.IsB2C)
                 {
-                    authority = $"{ _applicationOptions.Instance}tfp/{_microsoftIdentityOptions.Domain}/{_microsoftIdentityOptions.DefaultUserFlow}";
+                    authority = $"{_applicationOptions.Instance}tfp/{_microsoftIdentityOptions.Domain}/{_microsoftIdentityOptions.DefaultUserFlow}";
                     app = ConfidentialClientApplicationBuilder
                         .CreateWithApplicationOptions(_applicationOptions)
                         .WithRedirectUri(currentUri)
@@ -412,7 +412,7 @@ namespace Microsoft.Identity.Web
                 }
                 else
                 {
-                    authority = $"{ _applicationOptions.Instance}{_applicationOptions.TenantId}/";
+                    authority = $"{_applicationOptions.Instance}{_applicationOptions.TenantId}/";
 
                     app = ConfidentialClientApplicationBuilder
                         .CreateWithApplicationOptions(_applicationOptions)
@@ -544,7 +544,7 @@ namespace Microsoft.Identity.Web
             // however until the STS sends sub-error codes for this error, this is the only
             // way to distinguish the case.
             // This is subject to change in the future
-            return (msalSeviceException.Message.Contains("AADSTS50013"));
+            return msalSeviceException.Message.Contains("AADSTS50013");
         }
 
         /// <summary>

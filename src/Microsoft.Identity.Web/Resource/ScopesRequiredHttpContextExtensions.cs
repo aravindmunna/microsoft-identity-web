@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License
 
-using Microsoft.AspNetCore.Http;
 using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
 
 namespace Microsoft.Identity.Web.Resource
 {

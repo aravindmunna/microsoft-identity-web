@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.IdentityModel.Tokens.Jwt;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Client;
-using System.IdentityModel.Tokens.Jwt;
-using System.Threading.Tasks;
 
 namespace Microsoft.Identity.Web.TokenCacheProviders
 {

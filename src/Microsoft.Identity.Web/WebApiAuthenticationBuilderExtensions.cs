@@ -1,16 +1,16 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Web.Resource;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Identity.Web
 {
@@ -81,7 +81,7 @@ namespace Microsoft.Identity.Web
             {
                 // TODO:
                 // Suspect. Why not get the IOption<MicrosoftIdentityOptions>?
-                var microsoftIdentityOptions = new MicrosoftIdentityOptions();// configuration.GetSection(configSectionName).Get<MicrosoftIdentityOptions>();
+                var microsoftIdentityOptions = new MicrosoftIdentityOptions(); // configuration.GetSection(configSectionName).Get<MicrosoftIdentityOptions>();
                 configureMicrosoftIdentityOptions(microsoftIdentityOptions);
 
                 if (string.IsNullOrWhiteSpace(options.Authority))

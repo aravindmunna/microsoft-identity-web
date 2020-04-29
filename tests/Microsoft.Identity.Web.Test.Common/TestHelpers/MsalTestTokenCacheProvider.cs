@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web.TokenCacheProviders;
 using Microsoft.Identity.Web.TokenCacheProviders.InMemory;
-using System.Threading.Tasks;
 
 namespace Microsoft.Identity.Web.Test.Common.TestHelpers
 {
